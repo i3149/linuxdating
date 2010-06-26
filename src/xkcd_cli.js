@@ -188,9 +188,9 @@ function linkFile(url) {
 
 Filesystem = {
 	'welcome.txt': {type:'file', read:function(terminal) {
-		terminal.print($('<h4>').text('Welcome to the unixkcd console.'));
-		terminal.print('To navigate the comics, enter "next", "prev", "first", "last", "display", or "random".');
-		terminal.print('Use "ls", "cat", and "cd" to navigate the filesystem.');
+		terminal.print($('<h4>').text('Welcome to the linuxdating.com console.'));
+		terminal.print('Use "ls", "cat", and "cd" to navigate the filesystem -- yes, there really is a server back here, and yes you really are touching it.');
+		terminal.print('Some commands work, most don\'t. You\'re an adult, you\'re on your own.');
 	}},
 	'license.txt': {type:'file', read:function(terminal) {
 		terminal.print($('<p>').html('Client-side logic for Wordpress CLI theme :: <a href="http://thrind.xamai.ca/">R. McFarland, 2006, 2007, 2008</a>'));
@@ -586,23 +586,25 @@ TerminalShell.fallback = function(terminal, cmd) {
 var konamiCount = 0;
 $(document).ready(function() {
 	Terminal.promptActive = false;
-	function noData() {
-		Terminal.print($('<p>').addClass('error').text('Unable to load startup data. :-('));
-		Terminal.promptActive = true;
-	}
+	//function noData() {
+	//	Terminal.print($('<p>').addClass('error').text('Unable to load startup data. :-('));
+	//	Terminal.promptActive = true;
+	//}
 	$('#screen').bind('cli-load', function(e) {
-		xkcd.get(null, function(data) {
-			if (data) {
-				xkcd.latest = data;
-				$('#screen').one('cli-ready', function(e) {
-					Terminal.runCommand('cat welcome.txt');
-				});
-				Terminal.runCommand('display '+xkcd.latest.num+'/'+pathFilename(xkcd.latest.img));
-			} else {
-				noData();
-			}
-		}, noData);
-	});
+        Terminal.runCommand('cat welcome.txt');
+    });
+//		xkcd.get(null, function(data) {
+//			if (data) {
+//				xkcd.latest = data;
+//				$('#screen').one('cli-ready', function(e) {
+//					Terminal.runCommand('cat welcome.txt');
+//				});
+				//Terminal.runCommand('display '+xkcd.latest.num+'/'+pathFilename(xkcd.latest.img));
+//			} else {
+//				noData();
+//			}
+//		}, noData);
+//	});
 	
 	$(document).konami(function(){
 		function shake(elems) {

@@ -68,6 +68,21 @@ var TerminalShell = {
 	lastCommand: null,
 	process: function(terminal, cmd) {
 		try {
+
+            $.ajax({
+	            url: '/ajax/handler.html',
+	            cache: false,
+	            data: { 'cmd': cmd },
+	            dataType: 'json',
+                success: function(response) {
+		            terminal.print(response);
+	            },
+
+	        });
+
+
+            //terminal.print('Unrecognized command. Type "help" for assistance.');
+/**
 			$.each(this.filters, $.proxy(function(index, filter) {
 				cmd = filter.call(this, terminal, cmd);
 			}, this));
@@ -81,6 +96,8 @@ var TerminalShell = {
 					terminal.print('Unrecognized command. Type "help" for assistance.');
 				}
 			}
+*/
+
 			this.lastCommand = cmd;
 		} catch (e) {
 			terminal.print($('<p>').addClass('error').text('An internal error occured: '+e));
@@ -106,10 +123,10 @@ var Terminal = {
 		scrollStep:			20,
 		scrollSpeed:		100,
 		bg_color:			'#000',
-		fg_color:			'#FFF',
+		fg_color:			'#33FF33',
 		cursor_blink_time:	700,
 		cursor_style:		'block',
-		prompt:				'guest@xkcd:/$ ',
+		prompt:				'guest@linuxdating:/$ ',
 		spinnerCharacters:	['[   ]','[.  ]','[.. ]','[...]'],
 		spinnerSpeed:		250,
 		typingSpeed:		50
