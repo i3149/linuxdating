@@ -39,6 +39,7 @@ sub eval_command
                 "head" => 1,
                 "ed" => 1,
                 "rm" => 1,
+                "mkdir" => 1,
                 "rmdir" => 1,
                 "sed" => 1,
                 "touch" => 1,
