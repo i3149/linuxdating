@@ -80,24 +80,6 @@ var TerminalShell = {
 
 	        });
 
-
-            //terminal.print('Unrecognized command. Type "help" for assistance.');
-/**
-			$.each(this.filters, $.proxy(function(index, filter) {
-				cmd = filter.call(this, terminal, cmd);
-			}, this));
-			var cmd_args = cmd.split(' ');
-			var cmd_name = cmd_args.shift();
-			cmd_args.unshift(terminal);
-			if (this.commands.hasOwnProperty(cmd_name)) {
-				this.commands[cmd_name].apply(this, cmd_args);
-			} else {
-				if (!(this.fallback && this.fallback(terminal, cmd))) {
-					terminal.print('Unrecognized command. Type "help" for assistance.');
-				}
-			}
-*/
-
 			this.lastCommand = cmd;
 		} catch (e) {
 			terminal.print($('<p>').addClass('error').text('An internal error occured: '+e));
