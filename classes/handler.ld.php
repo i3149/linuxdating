@@ -20,7 +20,7 @@ class LinuxDatingHandler {
     public static function process() {
         
         $cmd = $_REQUEST["cmd"];
-        if (!static::validate($cmd)) {
+        if (!LinuxDatingHandler::validate($cmd)) {
             return json_encode("ERROR: invalid cmd");
         }
 
