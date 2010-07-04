@@ -56,6 +56,7 @@ sub eval_command
     if ($args) {
         $args = " ".$args;
         $args =~ s/\.//g;
+        $args =~ s/\|//g;
         $args =~ s/ \// \/sandbox\//;
     }
     print ("busybox $cmd $args 2>&1\n");
